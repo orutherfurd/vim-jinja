@@ -68,6 +68,12 @@ syn region jinjaTagBlock start="{%" end="%}" contains=jinjaStatement,jinjaFilter
 syn region jinjaVarBlock start="{{" end="}}" contains=jinjaFilter,jinjaArgument,jinjaVarError display containedin=ALLBUT,@jinjaBlocks
 syn region jinjaComBlock start="{#" end="#}" contains=jinjaTodo containedin=ALLBUT,@jinjaBlocks
 
+" line statements set to %
+syn region jinjaTagBlock matchgroup=jinjaTagDelim start=#^\s*%# end=#$# keepend containedin=ALLBUT,jinjaTagBlock,jinjaVarBlock,jinjaRaw,jinjaString,jinjaNested,jinjaC
+
+" line comments set to ##
+syn region jinjaComment matchgroup=jinjaCommentDelim start="^\s*##" end="$" keepend containedin=ALLBUT,jinjaTagBlock,jinjaVarBlock,jinjaString
+
 
 hi def link jinjaTagBlock PreProc
 hi def link jinjaVarBlock PreProc
